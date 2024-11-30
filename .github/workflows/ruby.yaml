@@ -3,8 +3,31 @@ env:
   WORKING_DIRECTORY: bindings/c
   MACOSX_DEPLOYMENT_TARGET: '10.13'
 
+# this doesn't work until merged into master
+# on:
+#   workflow_dispatch:
+
 on:
-  workflow_dispatch:
+  pull_request:
+    paths-ignore:
+      # - 'bindings/**'
+      - 'examples/**'
+      - '.github/workflows/python.yaml'
+      - '.github/workflows/python-version-bump.yaml'
+      - '.github/workflows/node.yaml'
+      - '.github/workflows/node-version-bump.yaml'
+  # push:
+  #   branches:
+  #     - master
+  #   tags-ignore:
+  #     - '**'
+  #   paths-ignore:
+  #     # - 'bindings/**'
+  #     - 'examples/**'
+  #     - '.github/workflows/python.yaml'
+  #     - '.github/workflows/python-version-bump.yaml'
+  #     - '.github/workflows/node.yaml'
+  #     - '.github/workflows/node-version-bump.yaml'
 
 permissions: write-all
 
