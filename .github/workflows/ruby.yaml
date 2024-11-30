@@ -83,7 +83,7 @@ jobs:
         if: ${{ matrix.settings.target != 'x86_64-pc-windows-msvc' }}
         with:
           name: ${{ matrix.settings.target }}
-          path: target/${{ matrix.settings.target }}/release/libzen_ffi.{a,so,dylib}
+          path: target/${{ matrix.settings.target }}/release/libzen_ffi.[ads]*
           if-no-files-found: error
 
       - name: Upload artifact Windows
