@@ -86,13 +86,22 @@ jobs:
           path: target/${{ matrix.settings.target }}/release/libzen_ffi.[ads]*
           if-no-files-found: error
 
-      - name: Upload artifact Windows
+      - name: Upload artifact Windows (.lib)
         uses: actions/upload-artifact@v3
         if: ${{ matrix.settings.target == 'x86_64-pc-windows-msvc' }}
         with:
           name: ${{ matrix.settings.target }}
           path: target/${{ matrix.settings.target }}/release/zen_ffi.lib
           if-no-files-found: error
+
+      - name: Upload artifact Windows (.dll)
+        uses: actions/upload-artifact@v3
+        if: ${{ matrix.settings.target == 'x86_64-pc-windows-msvc' }}
+        with:
+          name: ${{ matrix.settings.target }}
+          path: target/${{ matrix.settings.target }}/release/zen_ffi.dll
+          if-no-files-found: error
+
   # copy-common:
   #   name: Upload common file
   #   runs-on: ubuntu-latest
